@@ -1,8 +1,5 @@
 package strings;
 
-import java.util.HashMap;
-import java.util.Map;
-
 // Leetcode 409
 public class LongestPalindrome {
     public static void main(String[] args) {
@@ -18,17 +15,12 @@ public class LongestPalindrome {
 
 
         int cnt = 0;
-        boolean isCharUsed = false;
 
-        for(int i=0;i<256;i++){
-            if(cnt%2==0 && map[i]%2==0)
-                cnt += map[i];
-            else if(cnt%2!=0&&map[i]%2==0)
-                cnt+=map[i];
-            else if(cnt%2==0&&map[i]%2!=0)
-                cnt+=map[i];
+        for (int i = 0; i < 256; i++) {
+            if(cnt%2!=0 && map[i]%2!=0)
+                cnt += map[i] - 1;
             else
-                cnt+=map[i]-1;
+                cnt += map[i];
         }
         return cnt;
     }
