@@ -3,7 +3,7 @@ package strings;
 // Leetcode 424
 public class LongestRepeatingCharacterReplacement {
     public static void main(String[] args) {
-        System.out.println(characterReplacement("AAAABAAAA", 1));
+        System.out.println(characterReplacement("BBBBAAACAC", 1));
     }
 
     public static int characterReplacement(String s, int k) {
@@ -19,7 +19,7 @@ public class LongestRepeatingCharacterReplacement {
                 arr[s.charAt(left) - 'A']--;
                 left++;
             }
-            maxLen = Math.max(right - left + 1, maxLen); // maintain max window
+            maxLen = Math.max(right - left + 1, maxLen); // count max len
             right++; // expand right
         }
         return maxLen;
