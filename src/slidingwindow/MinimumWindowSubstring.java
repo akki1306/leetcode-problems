@@ -2,7 +2,44 @@ package slidingwindow;
 
 public class MinimumWindowSubstring {
     public static void main(String[] args) {
-        System.out.println(minWindow("cabwefgewcwaefgcf", "cae"));
+        //System.out.println(minWindow("cabwefgewcwaefgcf", "cae"));
+
+        String s = "";
+        System.out.println(s.substring(0));
+
+       // System.out.println("1-2--3-1".indexOf("\\d-\\d", "1-2--3-1".indexOf("\\d-\\d")));
+        String traversal = "1-2--3--4";
+        int indexOfLeftTree = getIndexOfLeftTree(traversal,  2);
+        int indexOfRightTree = getIndexOfLeftTree(traversal.substring(indexOfLeftTree),  2);
+       // System.out.println(indexOfLeftTree);
+       // System.out.println(indexOfRightTree);
+    }
+
+    private static int getIndexOfLeftTree(String traversal, int level){
+        if(level == 0)
+            return traversal.charAt(0)-'0';
+
+
+        int count = 0;
+        int i=0;
+        int currentLevel = 0;
+        while(i<traversal.length()) {
+            count = 0;
+            while(traversal.charAt(i)=='-') {
+                count++;
+                i++;
+            }
+
+            if(Character.isDigit(traversal.charAt(i)) && count == level){
+                currentLevel++;
+            }
+
+            if(currentLevel > 1) {
+                return i-level;
+            }
+            i++;
+        }
+        return i-1;
     }
 
     public static String minWindow(String s, String t) {
